@@ -71,20 +71,7 @@ loginForm.addEventListener('submit', function(e) {
     }
 });
 
-document.getElementById('login-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('teacher-name').value.trim();
-    if (name) {
-        document.getElementById('landing-page').classList.remove('active');
-        document.getElementById('scroll-down-page').classList.add('active');
-        setTimeout(() => {
-            document.getElementById('scroll-down-page').classList.remove('active');
-            document.getElementById('main-page').classList.add('active');
-            document.getElementById('greeting-name').textContent = `Happy Teachers' Day, ${name}!`;
-            document.getElementById('message-name').textContent = name;
-        }, 2000);
-    }
-});
+
 
 function showMainPage() {
     // Update names in the main page

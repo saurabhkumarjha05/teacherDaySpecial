@@ -216,37 +216,7 @@ body {
     left: 100%;
 }
 
-#scroll-down-page {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.97);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 
-#scroll-down-page.active {
-    display: flex;
-}
-
-.scroll-down-text {
-    font-size: 2.5rem;
-    font-family: 'Dancing Script', cursive;
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-.scroll-arrow {
-    font-size: 3rem;
-    animation: bounce 1s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(20px);}
-}
 
 /* Main Page Styles */
 #main-page {
