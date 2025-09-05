@@ -1,8 +1,10 @@
 // DOM Elements
 const landingPage = document.getElementById('landing-page');
+const scrollDownPage = document.getElementById('scroll-down-page');
 const mainPage = document.getElementById('main-page');
 const loginForm = document.getElementById('login-form');
 const teacherNameInput = document.getElementById('teacher-name');
+const scrollTeacherName = document.getElementById('scroll-teacher-name');
 const greetingName = document.getElementById('greeting-name');
 const messageName = document.getElementById('message-name');
 const customCursor = document.querySelector('.custom-cursor');
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeQuoteCarousel();
     initializeMusic();
     createCarouselDots();
+    initializeScrollDown();
     
     // Add entrance animation to floating elements
     setTimeout(() => {
@@ -74,6 +77,11 @@ loginForm.addEventListener('submit', function(e) {
 
 
 function showMainPage() {
+    // Update names in the scroll down page
+    if (scrollTeacherName) {
+        scrollTeacherName.textContent = teacherName;
+    }
+    
     // Update names in the main page
     greetingName.textContent = `Happy Teachers' Day, ${teacherName} Sir!`;
     messageName.textContent = `${teacherName} Sir`;
@@ -81,12 +89,62 @@ function showMainPage() {
     // Add entrance animation
     greetingName.style.animation = 'glow 2s ease-in-out infinite alternate';
     
-    // Transition to main page
+    // Transition to scroll down page first
     landingPage.style.opacity = '0';
     landingPage.style.transform = 'translateY(-50px)';
     
     setTimeout(() => {
         landingPage.classList.remove('active');
+        if (scrollDownPage) {
+            scrollDownPage.classList.add('active');
+            scrollDownPage.style.opacity = '0';
+            scrollDownPage.style.transform = 'translateY(50px)';
+            
+            setTimeout(() => {
+                scrollDownPage.style.opacity = '1';
+                scrollDownPage.style.transform = 'translateY(0)';
+                scrollDownPage.style.transition = 'all 0.8s ease-out';
+            }, 100);
+        }
+    }, 500);
+}
+
+// Scroll Down Functionality
+function initializeScrollDown() {
+    // Add click event to scroll arrow
+    const scrollArrow = document.querySelector('.scroll-arrow');
+    if (scrollArrow) {
+        scrollArrow.addEventListener('click', showMainContent);
+    }
+    
+    // Add click event to entire scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', showMainContent);
+    }
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    // Add keyboard event for Enter key - improved version
+    document.addEventListener('keydown', function(e) {
+        // Check if Enter key is pressed and scroll down page is active
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            if (scrollDownPage && scrollDownPage.classList.contains('active')) {
+                e.preventDefault(); // Prevent any default behavior
+                showMainContent();
+            }
+        }
+    });
+}
+
+function showMainContent() {
+    // Transition from scroll down page to main page
+    scrollDownPage.style.opacity = '0';
+    scrollDownPage.style.transform = 'translateY(-50px)';
+    
+    setTimeout(() => {
+        scrollDownPage.classList.remove('active');
         mainPage.classList.add('active');
         mainPage.style.opacity = '0';
         mainPage.style.transform = 'translateY(50px)';
@@ -98,6 +156,14 @@ function showMainPage() {
         }, 100);
     }, 500);
 }
+
+function handleScroll() {
+    // If user scrolls on the scroll down page, automatically go to main page
+    if (scrollDownPage && scrollDownPage.classList.contains('active') && window.scrollY > 50) {
+        showMainContent();
+    }
+}
+
 
 // Quote Carousel Functionality
 function initializeQuoteCarousel() {
@@ -168,14 +234,20 @@ function toggleMusic() {
         musicText.textContent = 'Music Off';
         isMusicPlaying = false;
     } else {
-        // Note: In a real implementation, you would need a proper audio file
-        // For now, we'll just show the visual feedback
-        musicIcon.textContent = '🎵';
-        musicText.textContent = 'Music On';
-        isMusicPlaying = true;
-        
-        // Show a gentle notification
-        showNotification('Music feature ready! (Audio file needed for full functionality)');
+        // Try to play the music
+        backgroundMusic.play().then(() => {
+            musicIcon.textContent = '🎵';
+            musicText.textContent = 'Music On';
+            isMusicPlaying = true;
+            showNotification('Happy Teachers Day music is now playing!');
+        }).catch((error) => {
+            // If music fails to play, show notification
+            musicIcon.textContent = '🔇';
+            musicText.textContent = 'Music Error';
+            isMusicPlaying = false;
+            showNotification('Could not play music. Please check if the audio file exists.');
+            console.log('Music play error:', error);
+        });
     }
 }
 
