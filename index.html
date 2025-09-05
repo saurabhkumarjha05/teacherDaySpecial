@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teachers' Day Tribute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-book">📚</div>
+        <div class="floating-pen">✒️</div>
+        <div class="floating-star">⭐</div>
+        <div class="floating-heart">💝</div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <div class="container">
+            <div class="login-card">
+                <div class="card-header">
+                    <h1 class="main-title">Teachers' Day Tribute</h1>
+                    <p class="subtitle">A heartfelt celebration of your dedication</p>
+                </div>
+                
+                <form id="login-form" class="login-form">
+                    <div class="input-group">
+                        <input type="text" id="teacher-name" placeholder="Enter your name" required>
+                        <label for="teacher-name">Your Name</label>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <span>Enter</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+     <div id="scroll-down-page" class="page">
+        <div class="container scroll-down-container">
+            <h2 class="scroll-down-text">Please Scroll Down</h2>
+            <div class="scroll-arrow">⬇️</div>
+        </div>
+    </div>
+
+    <!-- Main Content Page -->
+    <div id="main-page" class="page">
+        <!-- Greeting Section -->
+        <section class="greeting-section">
+            <div class="container">
+                <h1 class="greeting-title" id="greeting-name">Happy Teachers' Day!</h1>
+                <div class="greeting-subtitle">A celebration of your incredible impact</div>
+            </div>
+        </section>
+
+        <!-- Quotes Section -->
+        <section class="quotes-section">
+            <div class="container">
+                <h2 class="section-title">Words of Wisdom</h2>
+                <div class="quotes-carousel">
+                    <div class="quote-card active">
+                        <div class="quote-text">"It is the supreme art of the teacher to awaken joy in creative expression and knowledge."</div>
+                        <div class="quote-author">— Albert Einstein</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-text">"A good teacher is like a candle—it consumes itself to light the way for others."</div>
+                        <div class="quote-author">— Mustafa Kemal Atatürk</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-text">"Teachers plant seeds of knowledge that grow forever."</div>
+                        <div class="quote-author">— Anonymous</div>
+                    </div>
+                    <div class="quote-card">
+                        <div class="quote-text">"You are not just a teacher, but a guide, a mentor, and a true inspiration. Thank you!"</div>
+                        <div class="quote-author">— A Grateful Student</div>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn">‹</button>
+                    <div class="carousel-dots"></div>
+                    <button class="carousel-btn next-btn">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Message Section -->
+        <section class="message-section">
+            <div class="container">
+                <h2 class="section-title">A Note from Your Student</h2>
+                <div class="message-card">
+                    <div class="message-content">
+                        <p class="message-greeting">Dear <span id="message-name">Teacher</span>,</p>
+                        <p class="message-text">
+                            On this Teachers' Day, I just want to say thank you — for your patience, your guidance, and for always believing in us.
+                        </p>
+                        <p class="message-text">
+                            This site is just a small token of our love and gratitude.
+                        </p>
+                        <p class="message-signature">Happy Teachers' Day!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer with Actions -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-actions">
+                    <button id="download-cert" class="action-btn">
+                        <span>📜</span>
+                        Download Certificate
+                    </button>
+                    <button id="music-toggle" class="action-btn">
+                        <span id="music-icon">🎵</span>
+                        <span id="music-text">Music</span>
+                    </button>
+                </div>
+                <p class="footer-text">Made with ❤️ for Teachers' Day</p>
+                <p class="developer-text">Developed By Saurabh K. Jha | Btech-CSE Student</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop>
+        <source src="Happy Teachers Day Ringtone Song.mp3" type="audio/wav">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
